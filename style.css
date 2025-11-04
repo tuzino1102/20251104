@@ -1,0 +1,131 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    transition: margin-left .5s;
+    background-color: #f4f4f4;
+}
+
+/* 選單圖示 */
+#menu-icon {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 10; /* 提高層級，確保在所有元素之上 */
+    color: #333; /* 改為深色，在淺色背景上更清晰 */
+}
+
+/* 側邊導覽列 */
+#sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 5; /* 提高層級，確保在主內容之上 */
+    top: 0;
+    left: 0;
+    background-color: #111;
+    background-color: rgba(128, 128, 128, 0.6); /* 60% 透明度的灰色 */
+    transition: 0.5s;
+    padding-top: 60px;
+    transform: translateX(-250px); /* 預設隱藏在左側 */
+}
+
+/* 導覽列中的連結 */
+#sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+}
+
+/* 連結滑鼠懸停效果 */
+#sidebar a:hover {
+    color: #f1f1f1;
+} 
+
+/* 當導覽列開啟時的樣式 */
+#sidebar.open {
+    transform: translateX(0);
+}
+
+/* 主要內容區域 */
+#main-content {
+    transition: margin-left .5s;
+    padding: 20px;
+    margin-left: 0; /* 預設邊距 */
+    position: relative; /* 為了 z-index */
+    z-index: 1; /* 確保內容在背景畫布之上 */
+}
+
+/* 當導覽列開啟時，主要內容向右推移 */
+#main-content.shifted {
+    margin-left: 250px;
+}
+
+/* p5.js 測驗頁面的按鈕 */
+#restart-btn {
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute; /* 改為絕對定位 */
+    top: 20px; /* 距離頂部 20px */
+    right: 20px; /* 距離右側 20px */
+    z-index: 10; /* 確保在其他元素之上 */
+    background-color: #4CAF50; /* 綠色背景 */
+}
+
+/* 首頁內容置中 */
+h1, p {
+    text-align: center;
+}
+
+/* 測驗頁面全螢幕樣式 */
+body.quiz-page {
+    overflow: hidden; /* 隱藏滾動條 */
+}
+
+body.quiz-page #main-content {
+    padding: 0;
+    margin-left: 0 !important; /* 強制移除邊距，即使選單打開 */
+    width: 100vw;
+    height: 100vh;
+}
+
+/* 確保畫布在 main-content 中正確顯示 */
+body.quiz-page #main-content canvas {
+    display: block;
+}
+
+/* 結果容器樣式 */
+#result-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    padding: 40px;
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    z-index: 100; /* 確保在畫布之上 */
+    /* 預設隱藏，由 sketch.js 控制背景 */
+}
+
+/* 結果文字樣式 */
+.result-text {
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+.correct {
+    color: #4CAF50; /* 綠色 */
+}
+
+.incorrect {
+    color: #f44336; /* 紅色 */
+}
